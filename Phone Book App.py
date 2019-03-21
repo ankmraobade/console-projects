@@ -6,6 +6,8 @@ Using Dictionary and Functions to create a Phone Book App that has the following
 2. Add a Contact
 3. Edit a Contact
 4. Delete a Contact
+5. Search a Contact
+6. Exit
 Implement the CRUD Functionality.
 """
 
@@ -56,12 +58,21 @@ def delete(phone_book):
     print("Contact", name, "has been deleted successfully!")
     print("New Phone Book: ", phone_book)
 
+# Function: Search a Contact
+def search(phone_book):
+    search_name = input("Enter the name of the contact you want to search: ")
+    if search_name in phone_book:
+        print("Name: ", search_name)
+        print("Contact Phone: ", phone_book.get(search_name, 0)
+    else:
+        print("Contact: ", search_name, "Not Found! No such contact is available")
+
 print("--------------")
 print("PHONE BOOK APP")
 print("--------------")
 
 while True:
-    choice = int(input("Enter Your Choice: 1. View Phone Book 2. Add New Contact 3. Edit Existing Contact 4. Delete A Contact 5. Exit: "))
+    choice = int(input("Enter Your Choice: 1. View Phone Book 2. Add New Contact 3. Edit Existing Contact 4. Delete A Contact 5. Search A Contact 6. Exit: "))
 
     # Main Program
     def main(choice):
@@ -91,9 +102,13 @@ while True:
         # Deleting an existing Contact in Phone Book
         elif choice == 4:
             delete(phone_book)
+        
+        # Searching a Contact in Phone Book
+        elif choice == 5:
+            search(phone_book)
 
         # Exiting the Phone Book Application
-        elif choice == 5:
+        elif choice == 6:
             print("Thank you for using the Phone Book Application.")
             exit()
             
